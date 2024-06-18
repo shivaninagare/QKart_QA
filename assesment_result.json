@@ -1,0 +1,1 @@
+{"Testcase 01: Ensure register page is opened": "TEST_STATUS_SUCCESS", "Testcase 01: Ensure that the password is entered": "TEST_STATUS_SUCCESS", "Testcase 01: Verify that confirm password is entered": "TEST_STATUS_SUCCESS", "Testcase 01: Verify redirects to '/login' page on successful registration": "TEST_STATUS_SUCCESS", "Testcase 02: Re-registration": "TEST_STATUS_SUCCESS"}
