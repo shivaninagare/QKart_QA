@@ -2,17 +2,17 @@
 # Stop the existing the zalenium docker container if its runnning
 sudo docker stop zalenium
 
-# remove any screenshots to free up workspace memory
-
-if [ -d "Screenshots" ]; then
-    rm -r "Screenshots"
-    echo "Removed Screenshots"
-fi
-
-if [ -d "screenshots" ]; then
-    rm -r "screenshots"
-    echo "Removed screenshots"
-fi
+# Directories to add to .gitignore, ex: images and remove images to free memory
+find . -type f \( -iname '.jpg' -o -iname '.jpeg' -o -iname '*.png' \) -exec dirname {} \; | while read dir; do
+    # Remove the leading './' from the directory path
+    dir=${dir#./}
+    if ! grep -q "^$dir\$" .gitignore; then
+        echo "$dir" >> .gitignore
+        echo "Added $dir to .gitignore."
+    fi
+    rm -rf $dir/*.jpg $dir/*.jpeg $dir/*.png
+    echo "removing old screenshots"
+done
 
 
 # Start the zalenium docker container in 8082 port
