@@ -6,7 +6,6 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -30,7 +29,6 @@ public class Home {
             WebElement logout_button = driver.findElement(By.className("MuiButton-text"));
             logout_button.click();
 
-            // SLEEP_STMT_10: Wait for Logout to complete
             // Wait for Logout to Complete
             Thread.sleep(3000);
 
@@ -49,44 +47,17 @@ public class Home {
             // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 03: MILESTONE 1
             // Clear the contents of the search box and Enter the product name in the search
             // box
-            WebElement searchtext=driver.findElement(By.xpath("//*[@id='root']/div/div/div[1]/div[2]/div/input"));
-            searchtext.clear();
-            searchtext.sendKeys(product);
-            // Thread.sleep(3000);
-            WebDriverWait wait= new WebDriverWait(driver, 30);
-            ExpectedCondition<List<WebElement>> resultFound=ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//p[@class='MuiTypography-root MuiTypography-body1 css-yg30e6']"));
-            ExpectedCondition resultNotFound=ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//h4[text()=' No products found ']"));
-            wait.until(ExpectedConditions.or(resultNotFound,resultFound));
+            WebElement searchTextBox =
+                    driver.findElement(By.xpath("(//input[@name ='search'])[1]"));
+            searchTextBox.clear();
+            searchTextBox.sendKeys(product);
+            Thread.sleep(3000);
             return true;
         } catch (Exception e) {
             System.out.println("Error while searching for a product: " + e.getMessage());
             return false;
         }
     }
-    // public Boolean searchForProduct(String product) {
-    //     try {
-    //         // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 03: MILESTONE 1
-    //         // Clear the contents of the search box and Enter the product name in the search
-    //         // box
-    //         WebElement searchTextBox =
-    //                 driver.findElement(By.xpath("(//input[@name ='search'])[1]"));
-    //         searchTextBox.clear();
-    //         searchTextBox.sendKeys(product);
-    //         // Thread.sleep(3000);
-
-    //         WebDriverWait wait = new WebDriverWait(driver, 5);
-    //         wait.until(ExpectedConditions.or(
-    //                 ExpectedConditions.presenceOfElementLocated(
-    //                         By.xpath("//h4[text()=' No products found ']")),
-    //                 ExpectedConditions.presenceOfElementLocated(
-    //                         By.xpath("/div[@class='MuiCardContent-root css-1qw96cp']"))));
-
-    //         return true;
-    //     } catch (Exception e) {
-    //         System.out.println("Error while searching for a product: " + e.getMessage());
-    //         return false;
-    //     }
-    // }
 
     /*
      * Returns Array of Web Elements that are search results and return the same
@@ -193,45 +164,33 @@ public class Home {
             // Increment or decrement the quantity of the matching product until the current
             // quantity is reached (Note: Keep a look out when then input quantity is 0,
             // here we need to remove the item completely from the cart)
-            List<WebElement> parentElements =
-                    driver.findElements(By.xpath("//div[@class='MuiBox-root css-1gjj37g']"));
-            for (WebElement parentElement : parentElements) {
-                WebElement titlElement = parentElement.findElement(By.xpath("./div[1]"));
+            List<WebElement> parentElements = driver.findElements(By.xpath("//div[@class='MuiBox-root css-1gjj37g']"));
+            for(WebElement parentElement : parentElements){
+                WebElement titlElement =parentElement.findElement(By.xpath("./div[1]"));
                 String actualProductName = titlElement.getText();
 
-                if (actualProductName.equals(productName)) {
-                    while (true) {
+                if(actualProductName.equals(productName)){
+                    while(true){
 
+                    
+                    WebElement actualQuantityElement = parentElement.findElement(By.xpath(".//div[@data-testid='item-qty']"));
+                   String actualQuantityText = actualQuantityElement.getText();//1
+                   int actualQuantity = Integer.parseInt(actualQuantityText);
+                   if(quantity > actualQuantity){
+                    WebElement plusButton = parentElement.findElement(By.xpath("./div[2]//button[2]"));
+                    plusButton.click();
+                    Thread.sleep(3000);
+                   }else if(quantity < actualQuantity){
+                    WebElement minusButton = parentElement.findElement(By.xpath("./div[2]//button[1]"));
+                    minusButton.click();
+                    Thread.sleep(3000);
+                   }else if(quantity == actualQuantity){
+                    break;
+                   }
+                }
+                    
 
-                        WebElement actualQuantityElement = parentElement
-                                .findElement(By.xpath(".//div[@data-testid='item-qty']"));
-                        String actualQuantityText = actualQuantityElement.getText();// 1
-                        int actualQuantity = Integer.parseInt(actualQuantityText);
-                        WebDriverWait wait = new WebDriverWait(driver, 5);
-
-                        if (quantity > actualQuantity) {
-                            WebElement plusButton =
-                                    parentElement.findElement(By.xpath("./div[2]//button[2]"));
-                            plusButton.click();
-                            // Thread.sleep(3000);
-                            wait.until(ExpectedConditions.textToBePresentInElement(
-                                    parentElement.findElement(
-                                            By.xpath(".//div[@data-testid='item-qty']")),
-                                    String.valueOf(actualQuantity + 1)));
-                            } else if (quantity < actualQuantity) {
-                            WebElement minusButton =
-                                    parentElement.findElement(By.xpath("./div[2]//button[1]"));
-                            minusButton.click();
-                            //Thread.sleep(3000);
-                            wait.until(ExpectedConditions.textToBePresentInElement(
-                                parentElement.findElement(
-                                        By.xpath(".//div[@data-testid='item-qty']")),
-                                String.valueOf(actualQuantity - 1)));
-
-                        } else if (quantity == actualQuantity) {
-                            break;
-                        }
-                    }
+                    
 
 
 
@@ -240,14 +199,15 @@ public class Home {
 
 
             return false;
-        } catch (
+        }catch(
 
-        Exception e) {
-            if (quantity == 0)
-                return true;
-            System.out.println("exception occurred when updating cart: " + e.getMessage());
-            return false;
-        }
+    Exception e)
+    {
+        if (quantity == 0)
+            return true;
+        System.out.println("exception occurred when updating cart: " + e.getMessage());
+        return false;
+    }
     }
 
     /*

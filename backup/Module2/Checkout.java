@@ -27,20 +27,19 @@ public class Checkout {
      */
     public Boolean addNewAddress(String addresString) {
         try {
+            // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 05: MILESTONE 4
             /*
              * Click on the "Add new address" button, enter the addressString in the address
              * text box and click on the "ADD" button to save the address
+             * 
              */
-            WebElement addNewAddressElement=driver.findElement(By.xpath("//button[text()='Add new address']"));
-            addNewAddressElement.click();
-            WebElement addressInput=driver.findElement(By.xpath("//textarea[@placeholder='Enter your complete address']"));
-            addressInput.sendKeys(addresString);
-            WebElement addButton=driver.findElement(By.xpath("//button[text()='Add']"));
+            WebElement addNewAddressButton = driver.findElement(By.id("add-new-btn"));
+            addNewAddressButton.click();
+            WebElement addressTextArea = driver.findElement(By.xpath("//textarea[@placeholder='Enter your complete address']"));
+            addressTextArea.sendKeys(addresString);
+            WebElement addButton = driver.findElement(By.xpath("//button[text()='Add']"));
             addButton.click();
-            // Thread.sleep(2000);
-            WebDriverWait wait=new WebDriverWait(driver, 30);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//p[@class='MuiTypography-root MuiTypography-body1 css-yg30e6'])[1]")));
-
+            Thread.sleep(2000);
             return false;
         } catch (Exception e) {
             System.out.println("Exception occurred while entering address: " + e.getMessage());
@@ -100,9 +99,9 @@ public class Checkout {
         try {
             // TODO: CRIO_TASK_MODULE_TEST_AUTOMATION - TEST CASE 07: MILESTONE 6
             WebElement messagePopup = driver.findElement(By.id("notistack-snackbar"));
-            Boolean messagePopupStatus = messagePopup.isDisplayed();
+            Boolean messagePopupSatus = messagePopup.isDisplayed();
             String messagepopupText = messagePopup.getText();
-            if(messagePopupStatus = true && messagepopupText.equals("You do not have enough balance in your wallet for this purchase")){
+            if(messagepopupText.equals("You do not have enough balance in your wallet for this purchase")){
                 return true;
             }
             return false;
