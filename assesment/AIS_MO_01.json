@@ -81,7 +81,7 @@
         {
           "object_notation": "COMMAND",
           "operator": "contains",
-          "expected_value": "yonex"
+          "expected_value": "YONEX"
         },
         {
           "object_notation": "RESPONSE",
@@ -231,7 +231,7 @@
       "hint": "Are we opening the URL on a new window and navigating to it ? "
     },
     {
-      "description": "Testcase 9 : Verify Privacy Policy and ToS are opened in new Window",
+      "description": "Testcase 09 : Verify Privacy Policy and ToS are opened in new Window",
       "validations": [
         {
           "object_notation": "COMMAND",
@@ -244,12 +244,12 @@
           "expected_value": "GetWindows"
         }
       ],
-      "error_out": "Testcase 9 : Opening and switching to two windows are not present",
+      "error_out": "Testcase 09 : Opening and switching to two windows are not present",
       "is_enabled": true,
       "hint": "Are you getting the list of windows available ?"
     },
     {
-      "description": "Testcase 9 : Verify Privacy Policy and ToS are opened in new Window",
+      "description": "Testcase 09 : Verify Privacy Policy and ToS are opened in new Window",
       "validations": [
         {
           "object_notation": "COMMAND",
@@ -262,12 +262,12 @@
           "expected_value": "SwitchToWindow"
         }
       ],
-      "error_out": "Testcase 9 : Opening and switching to two windows are not present",
+      "error_out": "Testcase 09 : Opening and switching to two windows are not present",
       "is_enabled": true,
       "hint": "Are you switching to the privacy policy window ?"
     },
     {
-      "description": "Testcase 9 : Verify Privacy Policy and ToS are opened in new Window",
+      "description": "Testcase09 : Verify Privacy Policy and ToS are opened in new Window",
       "validations": [
         {
           "object_notation": "COMMAND",
@@ -280,12 +280,12 @@
           "expected_value": "CloseWindow"
         }
       ],
-      "error_out": "Testcase 9 : Opening and switching to two windows are not present",
+      "error_out": "Testcase 09 : Opening and switching to two windows are not present",
       "is_enabled": true,
       "hint": "Are you Closing the Opened Window (1)  "
     },
     {
-      "description": "Testcase 9 : Verify Privacy Policy and ToS are opened in new Window",
+      "description": "Testcase 09 : Verify Privacy Policy and ToS are opened in new Window",
       "validations": [
         {
           "object_notation": "COMMAND",
@@ -298,12 +298,12 @@
           "expected_value": "CloseWindow"
         }
       ],
-      "error_out": "Testcase 9 : Opening and switching to two windows are not present",
+      "error_out": "Testcase 09 : Opening and switching to two windows are not present",
       "is_enabled": true,
       "hint": "Are you Closing the Opened Window (2)  ?"
     },
     {
-      "description": "Testcase 9 : Verify Privacy Policy and ToS are opened in new Window",
+      "description": "Testcase 09 : Verify Privacy Policy and ToS are opened in new Window",
       "validations": [
         {
           "object_notation": "RESPONSE",
@@ -311,7 +311,7 @@
           "expected_value": "SwitchToWindow"
         }
       ],
-      "error_out": "Testcase 9 : Opening and switching to two windows are not present",
+      "error_out": "Testcase 09 : Opening and switching to two windows are not present",
       "is_enabled": true,
       "hint": "Are you swiching to the parent window ?"
     },
