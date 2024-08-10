@@ -92,7 +92,7 @@ public class Checkout {
     public Boolean placeOrder() {
         try {
             // Find the "PLACE ORDER" button and click on it
-            List<WebElement> elements = driver.findElementsByClassName("css-177pwqq");
+            List<WebElement> elements = driver.findElements(By.xpath("//button[text()='PLACE ORDER']"));
             for (WebElement element : elements) {
                 if (element.getText().equals("PLACE ORDER")) {
                     element.click();

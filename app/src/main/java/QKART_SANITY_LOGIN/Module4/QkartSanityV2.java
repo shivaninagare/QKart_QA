@@ -178,7 +178,7 @@ public class QkartSanityV2 {
 
         // Search for product
         status = homePage.searchForProduct("Gesundheit");
-        if (status) {
+        if (!status) {
             logStatus("TestCase 3", "Test Case Failure. Invalid keyword returned results", "FAIL");
             return false;
         }
@@ -683,7 +683,7 @@ public class QkartSanityV2 {
         status = Advertisements.size() == 3;
         logStatus("Step ", "Verify that 3 Advertisements are available", status ? "PASS" : "FAIL");
 
-        WebElement Advertisement1 = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/iframe[1]"));
+        WebElement Advertisement1 = driver.findElement(By.xpath("//iframe[@class='iframe'][1]"));
         driver.switchTo().frame(Advertisement1);
         driver.findElement(By.xpath("//button[text()='Buy Now']")).click();
         driver.switchTo().parentFrame();
@@ -694,7 +694,7 @@ public class QkartSanityV2 {
         driver.get(currentURL);
         Thread.sleep(3000);
 
-        WebElement Advertisement2 = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/iframe[2]"));
+        WebElement Advertisement2 = driver.findElement(By.xpath("//iframe[@class='iframe'][2]"));
         driver.switchTo().frame(Advertisement2);
         driver.findElement(By.xpath("//button[text()='Buy Now']")).click();
         driver.switchTo().parentFrame();
@@ -718,7 +718,7 @@ public class QkartSanityV2 {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         try {
-            // Execute Test Case 1
+            //Execute Test Case 1
             totalTests += 1;
             status = TestCase01(driver);
             if (status) {
@@ -736,16 +736,16 @@ public class QkartSanityV2 {
 
             System.out.println("");
 
-            // Execute Test Case 3
+            // // Execute Test Case 3
             totalTests += 1;
             status = TestCase03(driver);
             if (status) {
                 passedTests += 1;
             }
 
-            System.out.println("");
+             System.out.println("");
 
-            // Execute Test Case 4
+            // // Execute Test Case 4
             totalTests += 1;
             status = TestCase04(driver);
             if (status) {
@@ -772,7 +772,7 @@ public class QkartSanityV2 {
 
             System.out.println("");
 
-            // Execute Test Case 7
+            // // Execute Test Case 7
             totalTests += 1;
             status = TestCase07(driver);
             if (status) {
@@ -808,7 +808,7 @@ public class QkartSanityV2 {
 
             System.out.println("");
 
-            // Execute Test Case 11
+           // Execute Test Case 11
             totalTests += 1;
             status = TestCase11(driver);
             if (status) {
