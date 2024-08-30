@@ -1,0 +1,17 @@
+
+{
+    "assesments":[
+        {
+            "assesmentDescription":"Verify if all 11 test cases have passed",
+            "find":".//test-method[contains(@name,'TestCase') and @status='PASS']",
+            "expectedCount":11,
+            "errorMessage":"All 11 test cases haven't passed"
+        },
+        {
+            "assesmentDescription":"Verify if 2 groups are present",
+            "find":".//group",
+            "expectedCount":2,
+            "errorMessage":"Couldn't find two groups"
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name = "Test case suite e-commerce application">
+
+<groups>
+    <run>
+    <include name ="Regression_Test"/>
+    <include name ="Sanity_test"/>
+    </run>
+</groups>
+
+<listeners>
+    <listeners class-name="QKART_TESTNG.testcases.ListenersTestNG" />
+</listeners>
+
+    <test name= "Test case execution on chrome Browser">
+        <parameter name ="Xtend" value="Xtend Smart Watch" />
+        <parameter name ="Yarine" value="Yarine Floor Lamp" /> 
+
+        <parameter name ="usr" value="testUser" />
+        <parameter name ="pwd" value="abc@123" /> 
+
+        <parameter name ="running_shoes" value="Running Shoes" /> 
+
+        <parameter name ="Yonex" value="YONEX Smash Badminton Racquet" /> 
+        <parameter name ="Tan" value="Tan Leatherette Weekender Duffle" /> 
+        <parameter name ="Add1" value="Addr line 1 addr Line 2 addr line 3"/> 
+        <parameter name ="Add2" value="Addr line 1 addr Line 2 addr line 3" /> 
+
+        <classes>
+            <class name="QKART_TESTNG.QKART_Tests">
+                <methods>
+                <include name="TestCase01"/>
+                <include name="TestCase02"/>
+                <include name="TestCase03"/>
+                <include name="TestCase04"/>
+                <include name="TestCase05"/>
+                <include name="TestCase06"/>
+                <include name="TestCase07"/>
+                <include name="TestCase08"/>
+                <include name="TestCase09"/>
+                <include name="TestCase10"/>
+                <include name="TestCase11"/>
+                </methods>    
+            </class>
+        </classes>
+    </test>
+</suite>

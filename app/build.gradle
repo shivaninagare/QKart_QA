@@ -23,6 +23,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '4.4.3'
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0-alpha-1'
+    testImplementation group: 'org.testng', name: 'testng', version: '7.6.0'
 
 }
 
@@ -39,6 +40,8 @@ test.dependsOn startScript
 
 test {
     useTestNG() {
+        useDefaultListeners = true
+        suites 'src/test/java/QKART_TESTNG/testng.xml'
     }
 
     afterSuite { desc, result ->
@@ -65,4 +68,3 @@ test {
 }
 
 mainClassName = 'QKART_SANITY_LOGIN.Module1.QkartSanity'
-mainClassName = 'QKART_SANITY_LOGIN.Module4.QkartSanityV2'

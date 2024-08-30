@@ -267,7 +267,7 @@
       "hint": "Are you switching to the privacy policy window ?"
     },
     {
-      "description": "Testcase09 : Verify Privacy Policy and ToS are opened in new Window",
+      "description": "Testcase 09 : Verify Privacy Policy and ToS are opened in new Window",
       "validations": [
         {
           "object_notation": "COMMAND",
